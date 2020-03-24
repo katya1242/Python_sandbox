@@ -19,24 +19,23 @@ def calculate_frequencies(file_contents):
                            "all", "any", "both", "each", "few", "more", "some", "such", "no", "nor", "too", "very",
                            "can", "will", "just"]
 
-    #lowercase_file_contents = file_contents.lower()
+    
 
-    # Removing all punctuation/wild characters from the list elements
-
-    # Create list of words from text
+     # Create list of words from text
     word_list = file_contents.split()
-
+    
+     # Removing all punctuation/wild characters from the list elements
     for idx in range(0, len(word_list)):
         for p in range(0, len(punctuations)):
             word_list[idx] = word_list[idx].replace(punctuations[p], "")
 
-    # Removing all numbers from the text
+     # Removing all numbers from the text
     no_numbers_list = []
     for j in word_list:
         if j.isalpha():
             no_numbers_list.append(j)
 
-    # Removing all "uninteresting" words from the list based on existing Uninteresting_words list
+     # Removing all "uninteresting" words from the list based on existing Uninteresting_words list
     output_list = []
     for item in no_numbers_list:
         if item not in uninteresting_words:
@@ -60,14 +59,6 @@ def generate_from_frequencies(list_with_text):
     return res_word_count
 
 
+#testing
+print(generate_from_frequencies(calculate_frequencies("""Towardgggg 5 6 8 cab toward ten o’clock n ten ten was{5} transferred to a cab,""")))
 
-#print( calculate_frequencies('''!()-[jlnjn  jkjkj kjkjk kj kj kj kj kj k]{};:'\"\,<>./?@#$%^&*_~''') )
-
-
-
-print(generate_from_frequencies(calculate_frequencies("""Towardgggg 5 6 8 cab toward ten o’clock that evening my luggage ten ten ten was{5} transferred to a cab,""")))
-
-    # wordcloud
-  #  cloud = wordcloud.WordCloud()
-  #  cloud.generate_from_frequencies()
-  #  return cloud.to_array()
